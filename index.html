@@ -23,7 +23,14 @@ button:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
 /* верхняя панель */
 .top{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:1000px;margin:0 auto;padding:18px 20px 0}
-.plate{background:#000;border:2px solid #fff;padding:6px 20px;transform:skewX(-12deg);font-weight:800;font-size:1.05rem}
+.plate{
+  background:#000;
+  border:2px solid #fff;
+  padding:5px 16px;
+  transform:skewX(-12deg);
+  font-weight:800;
+  font-size:.92rem;
+}
 .plate span{display:inline-block;transform:skewX(12deg)}
 .tabs{display:flex;align-items:center;gap:4px;background:#000;border-radius:99px;padding:4px 8px}
 .lr{font-weight:900;font-size:1.5rem;padding:0 8px;line-height:1}
@@ -124,13 +131,30 @@ body.intro .head,body.intro .cd{animation-delay:.95s}
 @media (max-width:720px){
  .wrap{grid-template-columns:1fr;gap:22px;padding-top:22px}
  .menu{transform:none;flex-direction:column;align-items:flex-start;padding:6px 10px 10px 0;gap:8px}
- .day{font-size:1.3rem;white-space:nowrap;flex:none}
+.day{
+  font-size:1.1rem;
+  white-space:nowrap;
+  flex:none;
+  padding:2px 14px;
+}
  .day.on{transform:skewX(-8deg) scale(1.04)}
  .tabs{flex-wrap:wrap;justify-content:center}
  .tab{padding:6px 11px;font-size:.85rem}
  .head{padding:8px 18px}.head h2{font-size:1.3rem}
- .in{flex-wrap:wrap;gap:8px 12px;padding-right:18px}
- .time{min-width:0}
+ .in{
+  grid-template-columns:auto minmax(0,1fr);
+  gap:8px 12px;
+  padding-right:18px;
+}
+
+.time{
+  min-width:0;
+}
+
+.kind{
+  grid-column:2;
+  justify-self:start;
+}
  .mark{font-size:17vw;bottom:8vh}
  .guide small{display:none}
 }
