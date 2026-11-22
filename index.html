@@ -22,7 +22,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .mark{position:fixed;left:-1vw;bottom:4vh;z-index:-1;font-size:min(14vw,190px);font-weight:900;text-transform:uppercase;line-height:.8;white-space:nowrap;color:rgba(255,255,255,.2);transform:rotate(-10deg);transform-origin:left bottom;pointer-events:none}
 
 /* верхняя панель */
-.top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;max-width:1000px;margin:0 auto;padding:18px 20px 0}
+.top{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:1000px;margin:0 auto;padding:18px 20px 0}
 .plate{background:#000;border:2px solid #fff;padding:6px 20px;transform:skewX(-12deg);font-weight:800;font-size:1.05rem}
 .plate span{display:inline-block;transform:skewX(12deg)}
 .tabs{display:flex;align-items:center;gap:4px;background:#000;border-radius:99px;padding:4px 8px}
@@ -57,6 +57,11 @@ button:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .k-z{border-right-color:var(--red)}
 .k-a{border-right-color:#fff}
 .empty{background:#000;padding:20px 28px;transform:skewX(-12deg)}
+.cd{display:flex;gap:12px;flex-wrap:wrap;animation:wipe .3s ease-out both}
+.cd>div{flex:none;min-width:210px;background:#000;border-left:6px solid var(--red);transform:skewX(-12deg);padding:8px 20px}
+.cd>div>*{display:block;transform:skewX(12deg)}
+.cd small{font-size:.74rem;color:var(--cyan)}
+.cd b{font-size:1.5rem;font-weight:900;line-height:1.15}
 @keyframes in{from{opacity:0;translate:-34px 0}}
 
 .guide{position:fixed;right:20px;bottom:14px;text-align:right;font-weight:800;text-shadow:1px 1px 0 var(--navy)}
@@ -94,7 +99,7 @@ body.intro .les{animation-delay:calc(1s + var(--n)*.08s)}
 body.intro .mark{animation:fade 1s ease-out .8s both}
 body.intro .guide{animation:fade .6s 1.5s both}
 .head{animation:wipe .3s ease-out both}
-body.intro .head{animation-delay:.95s}
+body.intro .head,body.intro .cd{animation-delay:.95s}
 .day.on{animation:bump .25s ease-out}
 .right{display:flex;align-items:center;gap:10px}
 .snd{width:40px;height:40px;border-radius:50%;background:#000;border:2px solid #fff;font-size:1.2rem;font-weight:900;font-style:normal}
@@ -118,8 +123,8 @@ body.intro .head{animation-delay:.95s}
 
 @media (max-width:720px){
  .wrap{grid-template-columns:1fr;gap:22px;padding-top:22px}
- .menu{transform:none;flex-direction:row;overflow-x:auto;padding:6px 10px 10px 0;gap:14px}
- .day{font-size:1.15rem;white-space:nowrap;flex:none}
+ .menu{transform:none;flex-direction:column;align-items:flex-start;padding:6px 10px 10px 0;gap:8px}
+ .day{font-size:1.3rem;white-space:nowrap;flex:none}
  .day.on{transform:skewX(-8deg) scale(1.04)}
  .tabs{flex-wrap:wrap;justify-content:center}
  .tab{padding:6px 11px;font-size:.85rem}
@@ -138,6 +143,7 @@ body.intro .head{animation-delay:.95s}
 
 <header class="top">
   <div class="plate"><span>Клиническая психология 4.2</span></div>
+  <div class="cd" id="cd"></div>
   <div class="right">
     <nav class="tabs" id="tabs" aria-label="Неделя"></nav>
     <button class="snd" id="snd" aria-label="Звук">♪</button>
@@ -482,7 +488,8 @@ var WK = [
  [ // 28.12 – 01.01
   ["Понедельник", [
    ["9:00", "10:30", "Суд.-псих. экспертиза", "ул. Рабочая, 18", "a"],
-   ["10:40", "12:10", "Суд.-псих. экспертиза", "ул. Рабочая, 18", "a"]], "28.12.26", ""],
+   ["10:40", "12:10", "Суд.-псих. экспертиза", "ул. Рабочая, 18", "a"],
+   ["11:50", "", "Зачёт: Проективные методы в клин. псих.", "", "z"]], "28.12.26", ""],
   ["Вторник", [
    ["10:45", "12:15", "Суд.-псих. экспертиза", "Безант", "c"],
    ["12:25", "13:55", "Патопсих. диагностика (мппд)", "Безант", "a"]], "29.12.26", ""],
@@ -494,48 +501,82 @@ var WK = [
  [ // 11.01 – 15.01
   ["Понедельник", [
    ["9:00", "10:30", "Суд.-псих. экспертиза", "ул. Рабочая, 18", "a"],
-   ["10:40", "12:10", "Суд.-псих. экспертиза", "ул. Рабочая, 18", "a"]], "11.01.27", ""],
+   ["10:40", "12:10", "Суд.-псих. экспертиза", "ул. Рабочая, 18", "a"],
+   ["11:50", "", "Зачёт: Суд.-псих. экспертиза", "", "z"]], "11.01.27", ""],
   ["Вторник", [
    ["10:45", "12:15", "Суд.-псих. экспертиза", "Безант", "c"],
-   ["12:25", "13:55", "Патопсих. диагностика (мппд)", "Безант", "a"]], "12.01.27", ""],
+   ["12:25", "13:55", "Патопсих. диагностика (мппд)", "Безант", "a"],
+   ["15:50", "", "Зачёт: Психотехнология", "", "z"]], "12.01.27", ""],
   ["Среда", [], "13.01.27", ""],
   ["Четверг", [], "14.01.27", "Ничево"],
   ["Пятница", [], "15.01.27", "Сессия"]
  ]
 ];
-// l[4]: c — лекция, a — обычное занятие
+// l[4]: c — лекция, a — обычное занятие, z — зачёт (без времени конца)
 var W = [["31.08 – 04.09", "2026-08-31", "2026-09-04"], ["07.09 – 11.09", "2026-09-07", "2026-09-11"], ["14.09 – 18.09", "2026-09-14", "2026-09-18"], ["21.09 – 25.09", "2026-09-21", "2026-09-25"], ["28.09 – 02.10", "2026-09-28", "2026-10-02"], ["05.10 – 09.10", "2026-10-05", "2026-10-09"], ["12.10 – 16.10", "2026-10-12", "2026-10-16"], ["19.10 – 23.10", "2026-10-19", "2026-10-23"], ["26.10 – 30.10", "2026-10-26", "2026-10-30"], ["02.11 – 06.11", "2026-11-02", "2026-11-06"], ["09.11 – 13.11", "2026-11-09", "2026-11-13"], ["16.11 – 20.11", "2026-11-16", "2026-11-20"], ["23.11 – 27.11", "2026-11-23", "2026-11-27"], ["30.11 – 04.12", "2026-11-30", "2026-12-04"], ["07.12 – 11.12", "2026-12-07", "2026-12-11"], ["14.12 – 18.12", "2026-12-14", "2026-12-18"], ["21.12 – 25.12", "2026-12-21", "2026-12-25"], ["28.12 – 01.01", "2026-12-28", "2027-01-01"], ["11.01 – 15.01", "2027-01-11", "2027-01-15"]];
 var S = WK[0];
-var KIND = {a:"Занятие", c:"Лекция"};
+var KIND = {a:"Занятие", c:"Лекция", z:"Зачёт"};
 
-var g = new Date().getDay();
-var day = (g >= 1 && g <= 5) ? g - 1 : 0;
-var week = 0;
-(function () {
+var day = 0, week = 0;
+function goToday() {
   var n = new Date(), p = function (x) { return (x < 10 ? "0" : "") + x; };
   var t = n.getFullYear() + "-" + p(n.getMonth() + 1) + "-" + p(n.getDate());
+  var g = n.getDay();
+  day = (g >= 1 && g <= 5) ? g - 1 : 0;
   week = W.length - 1;
   for (var i = 0; i < W.length; i++) if (t <= W[i][2]) { week = i; break; }
   if (t < W[week][1]) day = 0;
-})();
+}
+goToday();
+
+/* ---- обратный отсчёт ---- */
+function dn(n) {
+  var a = n % 100, b = n % 10;
+  return n + " " + ((a > 10 && a < 15) ? "дней" : b === 1 ? "день" : (b > 1 && b < 5) ? "дня" : "дней");
+}
+function cdHtml() {
+  var n = new Date(), t0 = new Date(n.getFullYear(), n.getMonth(), n.getDate());
+  var p = function (x) { return (x < 10 ? "0" : "") + x; };
+  var key = function (d) { return p(d.getDate()) + "." + p(d.getMonth() + 1) + "." + String(d.getFullYear()).slice(2); };
+  var DN = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+  var off = {};
+  WK.forEach(function (w) { w.forEach(function (d) { if (d[3] === "Выходной") off[d[2]] = 1; }); });
+
+  var left = Math.round((new Date(2027, 0, 15) - t0) / 864e5);
+  var s1 = left > 0 ? dn(left) : left === 0 ? "Сегодня!" : "Идёт";
+  var c1 = '<div><small>До сессии · 15.01.27</small><b>' + s1 + '</b></div>';
+
+  var c2 = "";
+  for (var i = 0; i < 60; i++) {
+    var d = new Date(t0.getFullYear(), t0.getMonth(), t0.getDate() + i), wd = d.getDay();
+    if (wd === 0 || wd === 6 || off[key(d)]) {
+      c2 = '<div><small>' + (i === 0 ? "Сегодня" : "Ближайший выходной") + ' · ' + DN[wd] + ', ' + key(d).slice(0, 5) + '</small><b>' +
+        (i === 0 ? "Выходной :3" : i === 1 ? "Завтра" : "через " + dn(i)) + '</b></div>';
+      break;
+    }
+  }
+  return c1 + c2;
+}
 
 function render() {
   S = WK[week];
   document.getElementById("tabs").innerHTML =
     '<button class="lr" data-w="-1" aria-label="Предыдущая неделя"><i>◀</i> L</button>' +
     '<button class="tab on" aria-pressed="true">' + W[week][0] + '</button>' +
-    '<button class="lr" data-w="1" aria-label="Следующая неделя">R <i>▶</i></button>';
+    '<button class="lr" data-w="1" aria-label="Следующая неделя">R <i>▶</i></button>' +
+    '<button class="tab" data-today="1">Сегодня</button>';
 
   document.getElementById("menu").innerHTML = S.map(function (d, i) {
     return '<button class="day' + (i === day ? ' on' : '') + '" style="--i:' + i + '" data-day="' + i + '" aria-pressed="' + (i === day) + '">' + d[0] + '</button>';
   }).join("");
 
   var list = S[day][1];
+  document.getElementById("cd").innerHTML = cdHtml();
   document.getElementById("panel").innerHTML =
     '<div class="head"><h2>' + S[day][0] + '</h2><small>' + (S[day][2] ? S[day][2] + ' · ' : '') + 'Пар: ' + list.length + '</small></div>' +
     (list.length ? list.map(function (l, n) {
       return '<article class="les k-' + l[4] + '" style="--n:' + n + '"><div class="in">' +
-        '<div class="time">' + l[0] + ' – ' + l[1] + '</div>' +
+        '<div class="time">' + (l[1] ? l[0] + ' – ' + l[1] : l[0]) + '</div>' +
         '<div class="txt"><h3>' + l[2] + '</h3>' + (l[3] ? '<p>' + l[3] + '</p>' : '') + '</div>' +
         '<span class="kind">' + KIND[l[4]] + '</span></div></article>';
     }).join("") : '<div class="empty">' + (S[day][3] || 'Занятий нет') + '</div>');
@@ -669,6 +710,7 @@ document.addEventListener("click", function (e) {
   if (b.dataset.day) { if (+b.dataset.day === day) return; day = +b.dataset.day; play("day", day); }
   else if (b.dataset.week) { week = +b.dataset.week; play("week"); }
   else if (b.dataset.w) { week = (week + +b.dataset.w + W.length) % W.length; play("week"); }
+  else if (b.dataset.today) { goToday(); play("week"); }
   else return;
   render();
 });
