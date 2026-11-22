@@ -134,6 +134,28 @@ body.intro .head,body.intro .cd{animation-delay:.95s}
  .mark{font-size:17vw;bottom:8vh}
  .guide small{display:none}
 }
+@media (max-width:720px){
+  .cd {
+    width:100%;
+    flex-wrap:nowrap;
+    gap:8px;
+  }
+
+  .cd>div {
+    flex:1;
+    min-width:0;
+    padding:7px 10px;
+  }
+
+  .cd small {
+    font-size:.62rem;
+    line-height:1.2;
+  }
+
+  .cd b {
+    font-size:1.1rem;
+  }
+}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -561,9 +583,9 @@ function cdHtml() {
 function render() {
   S = WK[week];
   document.getElementById("tabs").innerHTML =
-    '<button class="lr" data-w="-1" aria-label="Предыдущая неделя"><i>◀</i> L</button>' +
+    '<button class="lr" data-w="-1" aria-label="Предыдущая неделя"><i>◀</i></button>' +
     '<button class="tab on" aria-pressed="true">' + W[week][0] + '</button>' +
-    '<button class="lr" data-w="1" aria-label="Следующая неделя">R <i>▶</i></button>' +
+    '<button class="lr" data-w="1" aria-label="Следующая неделя"><i>▶</i></button>' +
     '<button class="tab" data-today="1">Сегодня</button>';
 
   document.getElementById("menu").innerHTML = S.map(function (d, i) {
