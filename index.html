@@ -137,23 +137,30 @@ body.intro .head,body.intro .cd{animation-delay:.95s}
 @media (max-width:720px){
   .cd {
     width:100%;
-    flex-wrap:nowrap;
+    box-sizing:border-box;
+    padding:0 12px;
     gap:8px;
+    flex-wrap:nowrap;
   }
 
   .cd>div {
-    flex:1;
+    flex:1 1 0;
     min-width:0;
-    padding:7px 10px;
+    padding:7px 8px;
   }
 
   .cd small {
-    font-size:.62rem;
+    font-size:.58rem;
     line-height:1.2;
+    overflow-wrap:anywhere;
   }
 
   .cd b {
-    font-size:1.1rem;
+    font-size:1rem;
+  }
+
+  .guide b {
+    display:none;
   }
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
