@@ -64,8 +64,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .k-z{border-right-color:var(--red)}
 .k-a{border-right-color:#fff}
 .empty{background:#000;padding:20px 28px;transform:skewX(-12deg)}
-.cd{display:flex;gap:12px;flex-wrap:wrap;animation:wipe .3s ease-out both}
-.cd>div{flex:none;min-width:210px;background:#000;border-left:6px solid var(--red);transform:skewX(-12deg);padding:8px 20px}
+.cd{display:flex;gap:18px;flex-wrap:nowrap}
+.cd>div{flex:none;min-width:210px;background:#000;border-left:6px solid var(--red);transform:skewX(-12deg);padding:8px 20px;animation:wipe .3s ease-out both}
 .cd>div>*{display:block;transform:skewX(12deg)}
 .cd small{font-size:.74rem;color:var(--cyan)}
 .cd b{font-size:1.5rem;font-weight:900;line-height:1.15}
@@ -106,7 +106,7 @@ body.intro .les{animation-delay:calc(1s + var(--n)*.08s)}
 body.intro .mark{animation:fade 1s ease-out .8s both}
 body.intro .guide{animation:fade .6s 1.5s both}
 .head{animation:wipe .3s ease-out both}
-body.intro .head,body.intro .cd{animation-delay:.95s}
+body.intro .head,body.intro .cd>div{animation-delay:.95s}
 .day.on{animation:bump .25s ease-out}
 .right{display:flex;align-items:center;gap:10px}
 .snd{width:40px;height:40px;border-radius:50%;background:#000;border:2px solid #fff;font-size:1.2rem;font-weight:900;font-style:normal}
@@ -163,7 +163,7 @@ body.intro .head,body.intro .cd{animation-delay:.95s}
     width:100%;
     box-sizing:border-box;
     padding:0 12px;
-    gap:8px;
+    gap:14px;
     flex-wrap:nowrap;
   }
 
@@ -221,7 +221,7 @@ body.intro .head,body.intro .cd{animation-delay:.95s}
 .time::before {
   content: "";
   position: absolute;
-  inset: 0 7px;
+  inset: 0 7px 0 -18px;
   background: #fff;
   transform: skewX(-12deg);
   z-index: -1;
@@ -255,7 +255,7 @@ body.intro .head,body.intro .cd{animation-delay:.95s}
   }
 
   .time::before {
-    inset: 0 5px;
+    inset: 0 5px 0 -12px;
   }
 
   .txt h3 {
